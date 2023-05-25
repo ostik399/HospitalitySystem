@@ -4,29 +4,7 @@ bd_user = {
     "2": "2"
 }
 
-def User():
-    try:
-        count = 0
-        
-        while count < 3:
-            check = False
-            email = input('email -> ')
-            password = input('password -> ')
-            
-            if email in bd_user and bd_user[email] == password:
-                check = True
-            
-            if check:
-                print("Вас авторизовано")
-                return True
-            elif count < 2:
-                print("Повторіть спробу")
-            else:
-                print("Вас заблоковано")
-                return False
-            count += 1
-    except:
-        print('error')
+
        
 def AddUserToDb():
     email = input("email: ")
@@ -81,7 +59,7 @@ while True:
         print("Гарного дня!")
         break
     elif check == 1:
-        User()
+        doctor()
     elif check == 2:
         AddUserToDb()
     elif check == 3:
