@@ -47,16 +47,33 @@ def doctor():
     except:
         print('error')       
 def newpassword():
-    email = input("email: ")
-    password = input("password: ")
-    if email in bd_user and bd_user[email] == password:
-        change=input("ви хочете змінити пароль? ")
-        if change=="Так":
-            newpassword=input("write new password: ")
-            bd_user[email] = newpassword
-            print(" ви оновили свій пароль")
-        elif change=="ні":
-            print("гарного дня")
+    try:
+        count=0
+        while count < 3:
+            check = False
+            email = input('email -> ')
+            password = input('password -> ')
+                        
+            if email in bd_user and bd_user[email] == password:
+                check = True
+            if check:
+                
+                change=input("ви хочете змінити пароль? ")
+                if change=="так":
+                    newpassword=input("напишіть новий пароль+: ")
+                    bd_user[email] = newpassword
+                    print(" ви оновили свій пароль")
+                elif change=="ні":
+                    print("гарного дня")
+                return True
+            elif count < 2:
+                print("Повторіть спробу")
+            else:
+                print("Вас заблоковано")
+                return False
+            count += 1
+    except:
+        print("error")
 def main():
     while True:
         print("Якщо ви хочете подивитись всіх користувач, напишіть 1\n" +
