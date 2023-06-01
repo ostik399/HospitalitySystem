@@ -3,8 +3,6 @@ bd_user = {
     "1": "1",
     "2": "2"
 }
-
-
        
 def AddUserToDb():
     email = input("email: ")
@@ -48,21 +46,38 @@ def doctor():
             count += 1
     except:
         print('error')       
-while True:
-    print("Якщо ви хочете подивитись всіх користувач, напишіть *1*\n" +
-        "Якщо ви хочете додати користувача, напишіть *2*\n" +
-        "Якщо ви хочете видалити користувача, напишіть *3*\n" +
-        "Якщо ви хочете завершити програму, напишіть *0*")
-    
-    check = int(input())
-    if check == 0:
-        print("Гарного дня!")
-        break
-    elif check == 1:
-        doctor()
-    elif check == 2:
-        AddUserToDb()
-    elif check == 3:
-        deleting()
-    else:
-        print("Оберіть ще раз")
+def newpassword():
+    email = input("email: ")
+    password = input("password: ")
+    if email in bd_user and bd_user[email] == password:
+        change=input("ви хочете змінити пароль? ")
+        if change=="Так":
+            newpassword=input("write new password: ")
+            bd_user[email] = newpassword
+            print(" ви оновили свій пароль")
+        elif change=="ні":
+            print("гарного дня")
+def main():
+    while True:
+        print("Якщо ви хочете подивитись всіх користувач, напишіть 1\n" +
+            "Якщо ви хочете додати користувача, напишіть 2\n" +
+            "Якщо ви хочете видалити користувача, напишіть 3\n" + 
+            "якщо ви хочете змінити пароль, напишіть 4\n" +
+            "Якщо ви хочете завершити програму, напишіть 0")
+
+        check = int(input())
+        if check == 0:
+            print("Гарного дня!")
+            break
+        elif check == 1:
+            doctor()
+        elif check == 2:
+            AddUserToDb()
+        elif check == 3:
+            deleting()
+        elif check == 4:
+            newpassword()
+        else:
+            print("Оберіть ще раз")
+
+main()
